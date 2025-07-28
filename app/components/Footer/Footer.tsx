@@ -1,12 +1,14 @@
-import React from 'react'
-import LearningResource from './LearningResource'
-import BottomSection from './BottomSection'
+import React from "react";
+import LearningResource from "./LearningResource";
+import BottomSection from "./BottomSection";
+import { Section } from "./UpperSection/Section";
 
 export default function Footer() {
   return (
     <>
-     <LearningResource />
-     <BottomSection />
+      <Section />
+      <LearningResource />
+      <BottomSection />
     </>
-  )
+  );
 }
