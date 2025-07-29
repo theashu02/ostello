@@ -10,7 +10,7 @@ import ViewAllBatchesButton from "./components/Common/ViewAllButtonBatch";
 import FAQSection from "./components/FAQ/FAQSection";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Header/Navbar";
-import NeetExam2026 from "./components/Tables/Table";
+import NeetExam2026 from "./components/Tables/NewTable";
 
 export default function Home() {
   return (
@@ -43,10 +43,10 @@ export default function Home() {
         </div>
         {/* <BatchCards /> */}
         <MoreInNeet />
-        {/* <NeetExam2026 /> */}
-        {/* <FAQSection /> */}
-        {/* <AppBanner /> */}
-        {/* <Footer /> */}
+        <NeetExam2026 />
+        <FAQSection />
+        <AppBanner />
+        <Footer />
         {/* <Cards /> */}
       </div>
     </div>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Fragment } from 'react'
-import { House } from 'lucide-react';
+import { House,ArrowRight } from 'lucide-react';
 
 interface Crumb {
   label: string
@@ -72,6 +72,48 @@ const cards: HubCard[] = [
 ]
 
 
+const FloatingIconCard: React.FC<{ card: HubCard }> = ({ card }) => {
+  return (
+    <div className="relative w-full max-w-sm">
+      {/* Floating Icon - positioned half outside the card */}
+      <div
+        className="absolute -top-6 left-5 z-20 flex h-12 w-12 items-center justify-center rounded-full transition-transform duration-200 hover:scale-110"
+        style={{
+          backgroundColor: card.iconBg,
+          boxShadow: `0 4px 10px ${card.iconShadow}`,
+        }}
+      >
+        <img src={card.iconSrc} alt="" className="h-6 w-6" />
+      </div>
+
+      {/* Card */}
+      <a
+        key={card.id}
+        href={card.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative flex h-28 flex-row justify-between rounded-xl px-6 pt-8 transition-all duration-200 hover:shadow-lg hover:scale-[1.02]  border hover:border-amber-950"
+        style={{ backgroundColor: card.cardColor }}
+      >
+        {/* main content */}
+        <div className="relative z-10 w-3/4">
+          <div className="mb-3">
+            <h3 className="text-lg font-semibold text-gray-800 mb-2 leading-tight">{card.title}</h3>
+            <p className="text-xs text-gray-600 leading-relaxed">{card.description}</p>
+          </div>
+        </div>
+
+        {/* arrow - positioned at bottom right */}
+        <div className="flex justify-end w-1/4">
+          <span className="text-gray-600 transition-transform duration-200 group-hover:translate-x-1">
+            <ArrowRight className="h-6 w-6" />
+          </span>
+        </div>
+      </a>
+    </div>
+  );
+};
+
 function classNames(...cls: (string | undefined | false)[]) {
   return cls.filter(Boolean).join(' ')
 }
@@ -117,51 +159,14 @@ export default function NeetHubHeader() {
         of NEET UG 2026, including eligibility, syllabus, exam pattern, and
         preparation tips.
       </p>
-
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className='p-8 mt-10 bg-gray-50 rounded-2xl'>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((card) => (
-          <Link
-            key={card.id}
-            href={card.href}
-            target="_blank"
-            className="group relative flex h-40 flex-col justify-between overflow-hidden rounded-xl p-4 transition-shadow hover:shadow-lg"
-            style={{ backgroundColor: card.cardColor }}
-          >
-            {/* top floating icon */}
-            <div
-              className="absolute -top-5 right-4 flex h-14 w-14 items-center justify-center rounded-full"
-              style={{
-                backgroundColor: card.iconBg,
-                boxShadow: `0 4px 10px ${card.iconShadow}`,
-              }}
-            >
-              <img src={card.iconSrc} alt="" className="h-8 w-8" />
-            </div>
-
-            {/* main content */}
-            <div className="relative z-10 flex items-center gap-3">
-              <div
-                className="flex h-12 w-12 items-center justify-center rounded-full"
-                style={{
-                  backgroundColor: card.iconBg,
-                  boxShadow: `0 4px 10px ${card.iconShadow}`,
-                }}
-              >
-                <img src={card.iconSrc} alt="" className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-gray-800">{card.title}</h3>
-                <p className="text-xs text-gray-600">{card.description}</p>
-              </div>
-            </div>
-
-            {/* arrow */}
-            <span className="absolute bottom-4 right-4 text-gray-600 transition group-hover:translate-x-1">
-              <ArrowRightIcon className="h-6 w-6" />
-            </span>
-          </Link>
+          <FloatingIconCard key={card.id} card={card} />
         ))}
       </div>
+      </div>
+     
     </section>
   )
 }

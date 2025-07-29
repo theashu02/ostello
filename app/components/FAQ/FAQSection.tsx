@@ -41,15 +41,15 @@ const faqs: Faq[] = [
 
 export default function NeetFaqs() {
   return (
-    <section className="mx-auto max-w-5xl px-4 py-10 flex flex-col items-center">
-      <h2 className="text-center text-2xl font-bold md:text-3xl">
+    <section className="mx-auto max-w-6xl px-4 py-10 flex flex-col items-center">
+      <h2 className="text-center text-2xl font-bold md:text-4xl">
         NEET 2026 Preparation FAQs
       </h2>
 
       <Accordion
         type="single"
         collapsible
-        className="mt-8 w-full space-y-2"
+        className="mt-9 w-full space-y-2"
       >
         {faqs.map((faq, idx) => (
           <AccordionItem
@@ -57,10 +57,10 @@ export default function NeetFaqs() {
             value={`item-${idx}`}
             className="border-b"
           >
-            <AccordionTrigger className="text-start bg-[#f1f5fe] px-5">
+            <AccordionTrigger className="text-start hover:no-underline text-lg bg-[#f1f5fe] hover:bg-[#f1f5fe]/50 px-5">
               {faq.q}
             </AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground px-5">
+            <AccordionContent className="text-lg font-normal bg-[#f4f4f4] text-muted-foreground px-5 p-3">
               {faq.a}
             </AccordionContent>
           </AccordionItem>

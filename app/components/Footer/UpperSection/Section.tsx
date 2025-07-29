@@ -13,10 +13,6 @@ import {
   Send,
 } from 'lucide-react'
 
-/* ------------------------------------------------------------------ */
-/* 1 · DATA                                                           */
-/* ------------------------------------------------------------------ */
-
 const company = [
   { label: 'About Us', href: 'https://www.pw.live/about-us' },
   { label: 'Contact Us', href: 'https://www.pw.live/contact-us' },
@@ -104,9 +100,6 @@ const socials = [
 const logo =
   'https://static.pw.live/5eb393ee95fab7468a79d189/GLOBAL_CMS/537952c6-cac8-4284-83a1-4a81818d3ccc.webp'
 
-/* ------------------------------------------------------------------ */
-/* 2 · ATOM HELPERS                                                   */
-/* ------------------------------------------------------------------ */
 
 function Column({
   heading,
@@ -117,14 +110,14 @@ function Column({
 }) {
   return (
     <div className="space-y-2">
-      <h4 className="text-base font-semibold text-black">{heading}</h4>
+      <h4 className="text-[16px] font-normal text-black">{heading}</h4>
       <ul className="space-y-2">
         {links.map((l) => (
           <li key={l.href}>
             <Link
               href={l.href}
               target="_blank"
-              className="text-sm text-muted-foreground transition hover:text-black hover:underline"
+              className="text-[16px] font-normal text-muted-foreground transition hover:text-black hover:underline"
             >
               {l.label}
             </Link>
@@ -135,17 +128,10 @@ function Column({
   )
 }
 
-/* ------------------------------------------------------------------ */
-/* 3 · MAIN COMPONENT                                                 */
-/* ------------------------------------------------------------------ */
-
 export default function Section() {
   return (
     <footer className="border-b-2 bg-muted/50 text-muted-foreground">
       <div className="mx-auto max-w-6xl space-y-10 px-4 py-8">
-        {/* ---------------------------------------------------------------- */}
-        {/* Top area                                                         */}
-        {/* ---------------------------------------------------------------- */}
         <div className="flex flex-col gap-8 lg:flex-row lg:justify-between">
           {/* left block */}
           <div className="space-y-6 lg:w-2/5">
@@ -158,14 +144,14 @@ export default function Section() {
               </span>
             </div>
 
-            <p className="text-sm leading-relaxed text-gray-700">
+            <p className="text-sm leading-tight text-gray-700">
               We understand that every student has unique needs and abilities,
-              that’s why our curriculum is designed to adapt to your needs and
+              that's why our curriculum is designed to adapt to your needs and
               help you grow!
             </p>
 
             {/* store badges */}
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-8">
               <Button asChild variant="secondary" size="sm" className="p-0">
                 <Link
                   href="https://play.google.com/store/apps/details?id=xyz.penpencil.physicswala"
@@ -197,9 +183,9 @@ export default function Section() {
             </div>
 
             {/* socials */}
-            <div className="space-y-2">
-              <h4 className="text-base font-semibold text-black">
-                Let’s get social :
+            <div className="space-y-5">
+              <h4 className="text-xl font-semibold text-black">
+                Let's get social :
               </h4>
               <div className="flex gap-4">
                 {socials.map(({ icon: Icon, href, label }) => (
@@ -212,7 +198,7 @@ export default function Section() {
           </div>
 
           {/* right block (link columns) */}
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:w-3/5 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:w-3/5 xl:grid-cols-3">
             <Column heading="Company" links={company} />
             <Column heading="Our Centres" links={centres} />
             <Column heading="Popular Exams" links={popularExams} />
@@ -221,13 +207,6 @@ export default function Section() {
             <Column heading="Our Products" links={products} />
           </div>
         </div>
-
-        <Separator />
-
-        {/* bottom note (copyright etc.) */}
-        <p className="text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Physics Wallah. All rights reserved.
-        </p>
       </div>
     </footer>
   )

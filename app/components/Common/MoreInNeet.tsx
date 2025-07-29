@@ -59,38 +59,78 @@ const tiles: Tile[] = [
 /* ------------------------------------------------------------------ */
 /* TILE                                                               */
 /* ------------------------------------------------------------------ */
-function TileCard({ t }: { t: Tile }) {
+function TileCard1({ t }: { t: Tile }) {
   return (
     <Card
-      className="flex cursor-pointer items-center justify-between p-4 transition hover:shadow-md"
-      style={{ backgroundColor: t.bg }}
+      className="flex cursor-pointer items-center justify-between py-4 px-2 transition hover:shadow-md"
+      // style={{ backgroundColor: t.bg }}
     >
       <Link href={t.href} target="_blank">
-        <div className="flex items-center gap-3">
-          <div
-            className="flex h-12 w-12 items-center justify-center rounded-full"
-            style={{
-              backgroundColor: t.iconBg,
-              boxShadow: `0 4px 10px ${t.iconShadow}`,
-            }}
-          >
-            <Image
-              src={t.iconSrc}
-              alt=""
-              width={32}
-              height={32}
-              className="object-contain"
-              unoptimized
-            />
+        {/* <div className="flex items-center bg-amber-800"> */}
+          <div className="flex items-center gap-2 bg-amber-600">
+            <div
+              className="flex bg-red-500 h-12 w-12 items-center justify-center rounded-full"
+              style={{
+                backgroundColor: t.iconBg,
+                boxShadow: `0 4px 10px ${t.iconShadow}`,
+              }}
+            >
+              <Image
+                src={t.iconSrc}
+                alt=""
+                width={32}
+                height={32}
+                className="object-contain"
+                unoptimized
+              />
+            </div>
+            <span className="text-base font-semibold text-gray-900">
+              {t.label}
+            </span>
           </div>
-          <span className="text-base font-semibold text-gray-900">
-            {t.label}
-          </span>
           <ArrowRight className="h-5 w-5 flex-none text-gray-800" />
-        </div>
+        {/* </div> */}
       </Link>
     </Card>
   );
+}
+
+function TileCard({ t }: { t: Tile }) {
+  return (
+    <Card className="p-4 cursor-pointer transition shadow:md hover:shadow-lg duration-300 border border-transparent hover:border-gray-700" style={{ backgroundColor: t.bg }}>
+      <Link
+        href={t.href}
+        target="_blank"
+        className="flex items-center gap-3 transition hover:opacity-90"
+      >
+        {/* icon */}
+        <div
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
+          style={{
+            backgroundColor: t.iconBg,
+            boxShadow: `0 4px 10px ${t.iconShadow}`,
+          }}
+        >
+          <Image
+            src={t.iconSrc}
+            alt=""
+            width={32}
+            height={32}
+            className="object-contain"
+            unoptimized
+          />
+        </div>
+
+        {/* label */}
+        <span className="text-base font-bold text-gray-900">
+          {t.label}
+        </span>
+
+        {/* arrow aligned to the far right */}
+        <ArrowRight className="ml-auto h-5 w-5 text-gray-800" />
+      </Link>
+    </Card>
+  )
 }
 
 /* ------------------------------------------------------------------ */
@@ -98,9 +138,11 @@ function TileCard({ t }: { t: Tile }) {
 /* ------------------------------------------------------------------ */
 export default function MoreInNeet() {
   return (
-    <div className="mx-auto grid max-w-6xl gap-4 px-3 pt-4">
-      <section className="container flex flex-col gap-6 max-w-6xl bg-amber-900">
-        <h2 className="text-2xl font-bold text-gray-900">More in NEET</h2>
+    <div className="mx-auto grid max-w-6xl gap-4 px-3 py-4">
+      <section className="container flex flex-col gap-6">
+        <h2 className="text-[32px] font-bold text-gray-900 text-center">
+          More in NEET
+        </h2>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {tiles.map((tile) => (

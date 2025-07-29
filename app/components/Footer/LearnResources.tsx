@@ -1,10 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-
-/* ------------------------------------------------------------------
-  Types & helper
------------------------------------------------------------------- */
 type LinkItem = { href: string; text: string }
 type Group = { title: string; links: LinkItem[] }
 
@@ -14,44 +10,28 @@ const chunk = <T,>(arr: T[], size = 10) =>
     arr.slice(i * size, i * size + size),
   )
 
-/* ------------------------------------------------------------------
-  1 · FIRST FOUR GROUPS (2 × 2 grid)
------------------------------------------------------------------- */
 const firstFour: Group[] = [
   {
-    title: 'Notes (Class 6-9)',
+    title: 'PW Books',
     links: [
-      { text: 'Class-6 Theory & Notes', href: 'https://www.pw.live/subjects-class-six' },
-      { text: "Math's Notes for class 7", href: 'https://www.pw.live/topics-class-7-mathematics' },
-      { text: 'Science Notes for class 7', href: 'https://www.pw.live/topics-science-class-seven' },
-      { text: 'Class 8 Math Notes', href: 'https://www.pw.live/topics-mathematics-class-eight' },
-      { text: 'Class 8 Chemistry Notes', href: 'https://www.pw.live/topics-chemistry-class-8' },
-      { text: 'Class 8 Physics Notes', href: 'https://www.pw.live/topics-physics-class-8' },
-      { text: 'Class 8 Biology Notes', href: 'https://www.pw.live/topics-biology-class-eight' },
-      { text: 'Class 8 SST Notes', href: 'https://www.pw.live/topics-class-8-social-science-notes' },
-      { text: "Class 9 Math's Notes", href: 'https://www.pw.live/topics-class-9-mathematics' },
-      { text: 'Class 9 Physics Notes', href: 'https://www.pw.live/topics-physics-class-9' },
-      { text: 'Class 9 Chemistry Notes', href: 'https://www.pw.live/topics-chemistry-class-9' },
-      { text: 'Class 9 Biology Notes', href: 'https://www.pw.live/topics-biology-class-9' },
-    ],
-  },
-  {
-    title: 'PW Study Materials',
-    links: [
-      { text: 'Arjuna JEE Study Material', href: 'https://store.pw.live/products/arjuna-neet-class-11-pcb-combo-2025-omr' },
-      { text: 'JEE 5 PYQs', href: 'https://store.pw.live/products/jee-5-years-set-of-3-books' },
-      { text: 'JEE Mind Maps', href: 'https://store.pw.live/products/mind-maps-11-12-jje' },
-      { text: 'Yakeen Study Material', href: 'https://store.pw.live/products/yakeen-neet-droppers-pcb-combo-2025-omr' },
-      { text: 'NCERT Punch', href: 'https://store.pw.live/products/ncert-punch-pcb-combo-set-2024' },
-      { text: 'Arjuna Neet Study Material', href: 'https://store.pw.live/products/arjuna-neet-class-11-pcb-combo-2025-omr' },
-      { text: 'NEET PYQs', href: 'https://store.pw.live/products/37-years-neet-pcb-combo' },
-      { text: 'CBSE Sample Paper', href: 'https://store.pw.live/products/37-years-neet-pcb-combo' },
-      { text: 'CBSE Question Bank', href: 'https://store.pw.live/products/cbse-question-concept-bank-set-of-4-class-10-2025' },
-      { text: 'Udaan For Class 10', href: 'https://store.pw.live/products/udaan-for-class-10-physics-chemistry-mathematics-part-a-and-b-biology-combo-set-of-5-books-for-2025-exams-' },
-      { text: 'UPSC Sampoorna', href: 'https://store.pw.live/products/upsc-sampoorna-books-combo-set-of-19-civil-services-exam-onlyias-book-2023-edition' },
+      { text: 'NEET Books', href: 'https://store.pw.live/ug-entrance-exams/neet-books' },
+      { text: 'IIT JEE Books', href: 'https://store.pw.live/ug-entrance-exams/iit-jee-books' },
+      { text: 'School Prep Books', href: 'https://store.pw.live/school-books' },
       { text: 'PW Stationery', href: 'https://store.pw.live/pw-stationery' },
+      { text: 'UPSC CSE Books', href: 'https://store.pw.live/govt-entrance-exams/upsc-books' },
       { text: 'PW Merchandise', href: 'https://store.pw.live/pw-merchandise' },
-      { text: 'PW Device Courses', href: 'https://store.pw.live/device-courses' },
+      { text: 'NDA/Defence Books', href: 'https://store.pw.live/ug-entrance-exams/nda-defence-books' },
+      { text: 'GATE Books', href: 'https://store.pw.live/govt-entrance-exams/gate-books' },
+      { text: 'Device Courses', href: 'https://store.pw.live/device-courses' },
+      { text: 'CUET Books', href: 'https://store.pw.live/ug-entrance-exams/cuet-books' },
+      { text: 'CA/Finance Books', href: 'https://store.pw.live/ug-entrance-exams/ca-books' },
+      { text: 'UPPSC Books', href: 'https://store.pw.live/govt-entrance-exams/uppsc-books' },
+      { text: 'NEET PG Books', href: 'https://store.pw.live/govt-entrance-exams/neetpg-book' },
+      { text: 'BPSC Books', href: 'https://store.pw.live/govt-entrance-exams/bpsc-books' },
+      { text: 'SSC Books', href: 'https://store.pw.live/govt-entrance-exams/ssc-books' },
+      { text: 'MPSC Books', href: 'https://store.pw.live/govt-entrance-exams/mpsc-book' },
+      { text: 'MPPSC Books', href: 'https://store.pw.live/govt-entrance-exams/mppsc-books' },
+      { text: 'Teaching Books', href: 'https://store.pw.live/govt-entrance-exams/teaching' },
     ],
   },
   {
@@ -76,36 +56,43 @@ const firstFour: Group[] = [
     ],
   },
   {
-    title: 'PW Books',
+    title: 'PW Study Materials',
     links: [
-      { text: 'NEET Books', href: 'https://store.pw.live/ug-entrance-exams/neet-books' },
-      { text: 'IIT JEE Books', href: 'https://store.pw.live/ug-entrance-exams/iit-jee-books' },
-      { text: 'School Prep Books', href: 'https://store.pw.live/school-books' },
+      { text: 'Arjuna JEE Study Material', href: 'https://store.pw.live/products/arjuna-neet-class-11-pcb-combo-2025-omr' },
+      { text: 'JEE 5 PYQs', href: 'https://store.pw.live/products/jee-5-years-set-of-3-books' },
+      { text: 'JEE Mind Maps', href: 'https://store.pw.live/products/mind-maps-11-12-jje' },
+      { text: 'Yakeen Study Material', href: 'https://store.pw.live/products/yakeen-neet-droppers-pcb-combo-2025-omr' },
+      { text: 'NCERT Punch', href: 'https://store.pw.live/products/ncert-punch-pcb-combo-set-2024' },
+      { text: 'Arjuna Neet Study Material', href: 'https://store.pw.live/products/arjuna-neet-class-11-pcb-combo-2025-omr' },
+      { text: 'NEET PYQs', href: 'https://store.pw.live/products/37-years-neet-pcb-combo' },
+      { text: 'CBSE Sample Paper', href: 'https://store.pw.live/products/37-years-neet-pcb-combo' },
+      { text: 'CBSE Question Bank', href: 'https://store.pw.live/products/cbse-question-concept-bank-set-of-4-class-10-2025' },
+      { text: 'Udaan For Class 10', href: 'https://store.pw.live/products/udaan-for-class-10-physics-chemistry-mathematics-part-a-and-b-biology-combo-set-of-5-books-for-2025-exams-' },
+      { text: 'UPSC Sampoorna', href: 'https://store.pw.live/products/upsc-sampoorna-books-combo-set-of-19-civil-services-exam-onlyias-book-2023-edition' },
       { text: 'PW Stationery', href: 'https://store.pw.live/pw-stationery' },
-      { text: 'UPSC CSE Books', href: 'https://store.pw.live/govt-entrance-exams/upsc-books' },
       { text: 'PW Merchandise', href: 'https://store.pw.live/pw-merchandise' },
-      { text: 'NDA/Defence Books', href: 'https://store.pw.live/ug-entrance-exams/nda-defence-books' },
-      { text: 'GATE Books', href: 'https://store.pw.live/govt-entrance-exams/gate-books' },
-      { text: 'Device Courses', href: 'https://store.pw.live/device-courses' },
-      { text: 'CUET Books', href: 'https://store.pw.live/ug-entrance-exams/cuet-books' },
-      { text: 'CA/Finance Books', href: 'https://store.pw.live/ug-entrance-exams/ca-books' },
-      { text: 'UPPSC Books', href: 'https://store.pw.live/govt-entrance-exams/uppsc-books' },
-      { text: 'NEET PG Books', href: 'https://store.pw.live/govt-entrance-exams/neetpg-book' },
-      { text: 'BPSC Books', href: 'https://store.pw.live/govt-entrance-exams/bpsc-books' },
-      { text: 'SSC Books', href: 'https://store.pw.live/govt-entrance-exams/ssc-books' },
-      { text: 'MPSC Books', href: 'https://store.pw.live/govt-entrance-exams/mpsc-book' },
-      { text: 'MPPSC Books', href: 'https://store.pw.live/govt-entrance-exams/mppsc-books' },
-      { text: 'Teaching Books', href: 'https://store.pw.live/govt-entrance-exams/teaching' },
+      { text: 'PW Device Courses', href: 'https://store.pw.live/device-courses' },
+    ],
+  },
+  {
+    title: 'Notes (Class 6-9)',
+    links: [
+      { text: 'Class-6 Theory & Notes', href: 'https://www.pw.live/subjects-class-six' },
+      { text: "Math's Notes for class 7", href: 'https://www.pw.live/topics-class-7-mathematics' },
+      { text: 'Science Notes for class 7', href: 'https://www.pw.live/topics-science-class-seven' },
+      { text: 'Class 8 Math Notes', href: 'https://www.pw.live/topics-mathematics-class-eight' },
+      { text: 'Class 8 Chemistry Notes', href: 'https://www.pw.live/topics-chemistry-class-8' },
+      { text: 'Class 8 Physics Notes', href: 'https://www.pw.live/topics-physics-class-8' },
+      { text: 'Class 8 Biology Notes', href: 'https://www.pw.live/topics-biology-class-eight' },
+      { text: 'Class 8 SST Notes', href: 'https://www.pw.live/topics-class-8-social-science-notes' },
+      { text: "Class 9 Math's Notes", href: 'https://www.pw.live/topics-class-9-mathematics' },
+      { text: 'Class 9 Physics Notes', href: 'https://www.pw.live/topics-physics-class-9' },
+      { text: 'Class 9 Chemistry Notes', href: 'https://www.pw.live/topics-chemistry-class-9' },
+      { text: 'Class 9 Biology Notes', href: 'https://www.pw.live/topics-biology-class-9' },
     ],
   },
 ]
 
-/* ------------------------------------------------------------------
-  2 · REMAINING GROUPS (4-per-row grid) – shortened for brevity
------------------------------------------------------------------- */
-/* ------------------------------------------------------------------
-  2 · REMAINING GROUPS (4-per-row grid) – FIXED
------------------------------------------------------------------- */
 const otherGroups: Group[] = [
     {
       title: 'Ncert Solutions',
@@ -222,14 +209,12 @@ const otherGroups: Group[] = [
       ],
     },
   ]
-/* ------------------------------------------------------------------
-  Card – new column after 10 links
------------------------------------------------------------------- */
+
 const Card: React.FC<{ group: Group }> = ({ group }) => {
   const columns = chunk(group.links, 10)
 
   return (
-    <div className="rounded-lg border bg-white p-4 shadow-sm">
+    <div className="rounded-lg bg-[#F8F8F8] p-4">
       <h3 className="mb-3 text-base font-semibold text-gray-800">
         {group.title}
       </h3>
@@ -242,7 +227,7 @@ const Card: React.FC<{ group: Group }> = ({ group }) => {
                 <Link
                   href={l.href}
                   target="_blank"
-                  className="text-xs font-medium text-gray-600 transition hover:text-black hover:underline"
+                  className="text-xs font-normal text-gray-600 transition hover:text-black hover:underline"
                 >
                   {l.text}
                 </Link>
@@ -255,27 +240,22 @@ const Card: React.FC<{ group: Group }> = ({ group }) => {
   )
 }
 
-/* ------------------------------------------------------------------
-  MAIN COMPONENT
------------------------------------------------------------------- */
 export default function LearnResources() {
   return (
     <section className="bg-[#F8F8F8] py-8">
-      <div className="mx-auto max-w-6xl px-4">
-        <h2 className="mb-6 text-2xl font-bold text-[#3D3D3D]">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="mb-6 text-[26px] font-bold text-[#3D3D3D] pl-4">
           Free Learning Resources
         </h2>
 
-        {/* -------------- FIRST FOUR  (2 × 2) ----------------------- */}
         <div className="grid gap-6 sm:grid-cols-2">
           {firstFour.map((g) => (
             <Card key={g.title} group={g} />
           ))}
         </div>
 
-        <hr className="my-8 border-gray-300" />
+        {/* <hr className="my-8 border-gray-300" /> */}
 
-        {/* -------------- REMAINING  (4 per row) -------------------- */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {otherGroups.map((g) => (
             <Card key={g.title} group={g} />
