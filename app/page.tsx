@@ -1,6 +1,4 @@
 import ArjunaBatchCards from "./components/Cards/ArjunBtachCards";
-import BatchCards from "./components/Cards/BatchCards";
-import Cards from "./components/Cards/Cards";
 import NeetLakshyaCards from "./components/Cards/NeetLakshyaCards";
 import AppBanner from "./components/Common/AppBanner";
 import MoreInNeet from "./components/Common/MoreInNeet";
@@ -41,7 +39,6 @@ export default function Home() {
         <div className="flex justify-center my-8">
           <ViewAllBatchesButton />
         </div>
-        {/* <BatchCards /> */}
         <MoreInNeet />
         <NeetExam2026 />
         <FAQSection />

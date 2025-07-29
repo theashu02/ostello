@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Minus } from 'lucide-react';
 
 const Data = [
   ["Exam Name", "NEET UG 2026"],
@@ -231,7 +232,7 @@ export default function NeetExam2026() {
                     key={`${idx}-${i}`}
                     className="border border-black p-2 pb-6"
                   >
-                    {cell === "-" || cell === "-" ? "--" : cell}
+                    {cell === "-" || cell === "-" ? "-" : cell}
                   </td>
                 ))}
               </tr>
