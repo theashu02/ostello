@@ -1,77 +1,113 @@
-import { ChevronRight } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+"use client";
 
-export default function MoreInNEET() {
-  const neetFeatures = [
-    {
-      title: "PW AI GURU",
-      icon: "🤖",
-      bgColor: "bg-blue-100",
-      textColor: "text-blue-700",
-    },
-    {
-      title: "PW NCERT App",
-      icon: "📚",
-      bgColor: "bg-red-100",
-      textColor: "text-red-700",
-    },
-    {
-      title: "NEET Mentorship",
-      icon: "👨‍🏫",
-      bgColor: "bg-green-100",
-      textColor: "text-green-700",
-    },
-    {
-      title: "NEET Power Batch",
-      icon: "⚡",
-      bgColor: "bg-blue-50",
-      textColor: "text-blue-700",
-    },
-  ]
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
+/* ------------------------------------------------------------------ */
+/* DATA – one object per tile                                         */
+/* ------------------------------------------------------------------ */
+interface Tile {
+  label: string;
+  href: string;
+  bg: string; // card colour
+  iconBg: string; // behind icon
+  iconShadow: string; // box-shadow for icon circle
+  iconSrc: string;
+}
+
+const tiles: Tile[] = [
+  {
+    label: "PW AI GURU",
+    href: "https://www.pw.live/study/ai-guru?utm_source=AI%20GURE&utm_medium=SEO%20AI%20GURU&utm_campaign=SEO",
+    bg: "#E0EAFF",
+    iconBg: "#EEF4FF",
+    iconShadow: "rgba(97,114,243,0.20)",
+    iconSrc:
+      "https://static.pw.live/5eb393ee95fab7468a79d189/GLOBAL_CMS/330a1d60-bb02-4a5f-ab06-2e333ca374a3.webp",
+  },
+  {
+    label: "PW NCERT App",
+    href: "https://pwbooks-app.onelink.me/y2BH/x4ht3pcd",
+    bg: "#FEE4E2",
+    iconBg: "#FEF3F2",
+    iconShadow: "rgba(227,27,77,0.20)",
+    iconSrc:
+      "https://static.pw.live/5eb393ee95fab7468a79d189/GLOBAL_CMS/7b8748e9-73e6-4778-892a-8299042d0f34.webp",
+  },
+  {
+    label: "NEET Mentorship",
+    href: "https://disha.pw.live/?utm_source=NEET+Mentorship+SEO&utm_medium=SEO+NEET&utm_campaign=SEO",
+    bg: "#D3F8DF",
+    iconBg: "#EDFCF2",
+    iconShadow: "rgba(22,179,100,0.20)",
+    iconSrc:
+      "https://static.pw.live/5eb393ee95fab7468a79d189/GLOBAL_CMS/9977ba36-fa56-44af-8004-bc58cc15352a.webp",
+  },
+  {
+    label: "NEET Power Batch",
+    href: "https://www.pw.live/power-batch?utm_source=NEET+Power+Batch&utm_medium=SEO+NEET+POwer+Batch+Banner&utm_campaign=SEO",
+    bg: "#D1E9FF",
+    iconBg: "#EFF8FF",
+    iconShadow: "rgba(3,124,191,0.20)",
+    iconSrc:
+      "https://static.pw.live/5eb393ee95fab7468a79d189/GLOBAL_CMS/41ac2087-445c-4067-93ee-1ae5374b2cf8.webp",
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* TILE                                                               */
+/* ------------------------------------------------------------------ */
+function TileCard({ t }: { t: Tile }) {
   return (
-    <div className="w-full py-8 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* More in NEET Section */}
-        <div className="mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-gray-900">More in NEET</h2>
-
-          {/* Feature Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            {neetFeatures.map((feature, index) => (
-              <Card
-                key={index}
-                className={`${feature.bgColor} border-none cursor-pointer hover:shadow-md transition-all duration-200 hover:scale-105`}
-              >
-                <CardContent className="p-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="text-2xl">{feature.icon}</div>
-                    <span className={`font-semibold ${feature.textColor}`}>{feature.title}</span>
-                  </div>
-                  <ChevronRight className={`w-5 h-5 ${feature.textColor}`} />
-                </CardContent>
-              </Card>
-            ))}
+    <Card
+      className="flex cursor-pointer items-center justify-between p-4 transition hover:shadow-md"
+      style={{ backgroundColor: t.bg }}
+    >
+      <Link href={t.href} target="_blank">
+        <div className="flex items-center gap-3">
+          <div
+            className="flex h-12 w-12 items-center justify-center rounded-full"
+            style={{
+              backgroundColor: t.iconBg,
+              boxShadow: `0 4px 10px ${t.iconShadow}`,
+            }}
+          >
+            <Image
+              src={t.iconSrc}
+              alt=""
+              width={32}
+              height={32}
+              className="object-contain"
+              unoptimized
+            />
           </div>
+          <span className="text-base font-semibold text-gray-900">
+            {t.label}
+          </span>
+          <ArrowRight className="h-5 w-5 flex-none text-gray-800" />
         </div>
+      </Link>
+    </Card>
+  );
+}
 
-        {/* NEET Exam 2026 Overview Section */}
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">NEET Exam 2026 Overview</h2>
-          <div className="prose prose-gray max-w-none">
-            <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-              The National Eligibility cum Entrance Test (NEET) 2026 is a national-level entrance exam conducted by the
-              National Testing Agency (NTA) for admission to undergraduate medical, dental, and AYUSH courses like MBBS,
-              BDS, BAMS, BHMS, etc. It is mandatory for students who wish to take admission in government and private
-              medical colleges across India. The NEET exam is held once a year in offline pen-and-paper mode and covers
-              subjects like Physics, Chemistry, and Biology based on the{" "}
-              <span className="text-blue-600 font-medium">Class 11 and 12 NCERT syllabus</span>. The NEET 2026 exam will
-              be conducted in May 2026, and candidates must qualify it to participate in All India Quota (AIQ) and State
-              Quota counselling rounds.
-            </p>
-          </div>
+/* ------------------------------------------------------------------ */
+/* MAIN COMPONENT                                                     */
+/* ------------------------------------------------------------------ */
+export default function MoreInNeet() {
+  return (
+    <div className="mx-auto grid max-w-6xl gap-4 px-3 pt-4">
+      <section className="container flex flex-col gap-6 max-w-6xl bg-amber-900">
+        <h2 className="text-2xl font-bold text-gray-900">More in NEET</h2>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {tiles.map((tile) => (
+            <TileCard key={tile.label} t={tile} />
+          ))}
         </div>
-      </div>
+      </section>
     </div>
-  )
+  );
 }
